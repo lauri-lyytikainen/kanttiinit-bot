@@ -8,9 +8,9 @@ import datetime
 
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(BASEDIR, '.env'))
-TOKEN = os.getenv('DISCORD_TOKEN')
+TOKEN              = os.getenv('DISCORD_TOKEN')
 RESTAURANT_API_URL = "https://kitchen.kanttiinit.fi/restaurants?lang=fi&ids=1,2,3,5,7,8,41,45,50,51,52,59,64&priceCategories=student,studentPremium"
-MENU_API_URL = "https://kitchen.kanttiinit.fi/menus?lang=fi"
+MENU_API_URL       = "https://kitchen.kanttiinit.fi/menus?lang=fi"
 
 
 class MyClient(discord.Client):
@@ -51,7 +51,7 @@ def handle_command(input):
 def get_food_list(args):    
 
     restaurant_data = None
-    menu_data = None
+    menu_data       = None
 
     date = datetime.datetime.now()
     date = date.strftime("%Y-%m-%d")
@@ -59,9 +59,6 @@ def get_food_list(args):
     outputs = []
 
     try:
-
-      
-
         response1 = urlopen(RESTAURANT_API_URL)
         response2 = urlopen(MENU_API_URL + "&days=" + date) 
         restaurant_data = json.loads(response1.read())
@@ -71,11 +68,11 @@ def get_food_list(args):
         print(e.code)
         print(e.read())
         restaurant_data = None
-        menu_data = None
+        menu_data       = None
     except urllib.error.URLError as e:
         print(e.args)
         restaurant_data = None
-        menu_data = None
+        menu_data       = None
 
 
 
@@ -90,7 +87,6 @@ def get_food_list(args):
         for menu in menu_data:
             menu_strings.append(menu)
             
-        print(args)
         # Print each restaurant and its menu
         for i in range(len(restaurant_strings)):
             restaurant_menu = ""
