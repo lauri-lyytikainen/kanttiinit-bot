@@ -1,6 +1,6 @@
 # kanttiinit-bot
 
-A super simple discord bot to fetch Aalto Univeristys restaurant menus in discord
+A super simple discord bot to fetch Aalto Universitys restaurant menus in discord
 
 
 Add a .env file with 
